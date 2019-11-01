@@ -1,0 +1,5 @@
+version: "2"
+
+syncs:
+  php-fpm-pig-allowance-book-syncs:
+    src: '../application'

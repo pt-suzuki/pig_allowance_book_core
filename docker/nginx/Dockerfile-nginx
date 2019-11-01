@@ -1,0 +1,9 @@
+FROM    centos:centos7
+ENV     container docker
+RUN     yum install -y http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+RUN     yum -y update && \
+        yum install -y nginx
+ADD     ./docker/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+ADD     ./application/public /var/www/public
+EXPOSE 80
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]

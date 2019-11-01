@@ -1,0 +1,28 @@
+FROM    centos:centos7
+ENV     container docker
+ENV     TZ Asia/Tokyo
+RUN     yum -y install http://rpms.famillecollet.com/enterprise/remi-release-7.rpm &&  \
+        curl -sL https://rpm.nodesource.com/setup_8.x | bash -
+RUN     yum -y install --enablerepo=remi,remi-php73 php php-cli php-common php-pgsql php-devel php-fpm php-gd php-mbstring php-mysqlnd php-pdo php-pear php-pecl-apcu php-pecl-zip php-soap php-xml php-xmlrpc php71-php-pecl-xdebug &&  \
+        yum -y install nodejs zip unzip git python2-pip &&  \
+        yum update -y && \
+        sed -i -e '/override_install_langs/s/$/,ja_JP.utf8/g' /etc/yum.conf
+ADD     ./application /var/www
+ADD     ./docker/php-fpm/www.conf.erb /etc/php-fpm.d/www.conf
+ADD     ./docker/php-fpm/php.ini /etc/php.ini
+WORKDIR /var/www
+RUN     kill -USR2 1 &&  \
+        useradd nginx &&  \
+        mkdir -p /run/php-fpm && \
+        curl -sS https://getcomposer.org/installer | php -- --install-dir=/tmp && \
+        rm -Rf node_modules/*
+RUN     mv /tmp/composer.phar /usr/local/bin/composer
+RUN     touch  /var/www/storage/logs/laravel.log && \
+        chmod -Rf 777 /var/www/storage/logs/laravel.log && \
+        composer install --no-progress
+RUN     chmod -R 777 /var/www/storage /var/www/bootstrap/cache && \
+        ln -sf /dev/stdout /var/log/fpm-access.log && \
+        ln -sf /dev/stderr /var/log/fpm-error.log && \
+        php artisan passport:keys
+EXPOSE 9000
+CMD     ["bash", "start_prod.sh"]
