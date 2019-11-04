@@ -11,5 +11,9 @@ namespace App\Domains\Research;
 
 interface ResearchRepository
 {
+    public function getContentById(string $id);
 
+    public function getListByCriteria(ResearchSearchCriteria $criteria);
+
+    public function getPaginateListByCriteria(ResearchSearchCriteria $criteria);
 }

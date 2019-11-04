@@ -11,5 +11,9 @@ namespace App\Domains\User;
 
 interface UserRepository
 {
+    public function getContentById(string $id);
 
+    public function getListByCriteria(UserSearchCriteria $criteria);
+
+    public function getPaginateListByCriteria(UserSearchCriteria $criteria);
 }

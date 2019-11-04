@@ -11,5 +11,9 @@ namespace App\Domains\Shop;
 
 interface ShopRepository
 {
+    public function getContentById(string $id);
 
+    public function getListByCriteria(ShopSearchCriteria $criteria);
+
+    public function getPaginateListByCriteria(ShopSearchCriteria $criteria);
 }

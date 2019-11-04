@@ -9,7 +9,29 @@
 namespace App\Domains\Brand;
 
 
+use Illuminate\Database\DatabaseManager;
+
 class BrandRepositoryImpl implements BrandRepository
 {
+    /**
+     * @var DatabaseManager
+     */
+    private $db;
 
+    public function __construct(DatabaseManager $db)
+    {
+        $this->db = $db;
+    }
+
+    public function getContentById(string $id){
+        return ["data"=>"テーーと"];
+    }
+
+    public function getListByCriteria(BrandSearchCriteria $criteria){
+        return ["data"=>"テーーと"];
+    }
+
+    public function getPaginateListByCriteria(BrandSearchCriteria $criteria){
+        return ["data"=>"テーーと"];
+    }
 }

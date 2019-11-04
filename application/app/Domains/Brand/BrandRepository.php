@@ -11,5 +11,9 @@ namespace App\Domains\Brand;
 
 interface BrandRepository
 {
+    public function getContentById(string $id);
 
+    public function getListByCriteria(BrandSearchCriteria $criteria);
+
+    public function getPaginateListByCriteria(BrandSearchCriteria $criteria);
 }

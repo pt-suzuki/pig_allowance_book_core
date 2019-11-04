@@ -9,7 +9,27 @@
 namespace App\Domains\ToDo;
 
 
-class ToDoRepositoryImpl
-{
+use Illuminate\Database\DatabaseManager;
 
+class ToDoRepositoryImpl implements ToDoRepository
+{
+    /**
+     * @var DatabaseManager
+     */
+    private $db;
+
+    public function __construct(DatabaseManager $db)
+    {
+        $this->db = $db;
+    }
+
+    public function getContentById(string $id){
+
+    }
+    public function getListByCriteria(ToDoSearchCriteria $criteria){
+
+    }
+    public function getPaginateListByCriteria(ToDoSearchCriteria $criteria){
+
+    }
 }

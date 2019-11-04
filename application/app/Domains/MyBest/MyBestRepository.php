@@ -11,5 +11,9 @@ namespace App\Domains\MyBest;
 
 interface MyBestRepository
 {
+    public function getContentById(string $id);
 
+    public function getListByCriteria(MyBestSearchCriteria $criteria);
+
+    public function getPaginateListByCriteria(MyBestSearchCriteria $criteria);
 }

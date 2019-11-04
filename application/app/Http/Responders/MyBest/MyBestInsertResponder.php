@@ -2,21 +2,18 @@
 /**
  * Created by PhpStorm.
  * User: owner
- * Date: 2019/10/20
- * Time: 22:05
+ * Date: 2019/11/01
+ * Time: 17:38
  */
 
-namespace App\Http\Responder;
-
+namespace App\Http\Responders\MyBest;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
-class BrandResponder
+class MyBestInsertResponder
 {
-
     public function getResponse($data){
-
-        return new JsonResponse($data,Response::HTTP_CONFLICT);
+        return new JsonResponse($data,Response::HTTP_OK);
     }
 }

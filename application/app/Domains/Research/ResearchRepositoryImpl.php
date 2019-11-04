@@ -9,7 +9,27 @@
 namespace App\Domains\Research;
 
 
-class ResearchRepositoryImpl
-{
+use Illuminate\Database\DatabaseManager;
 
+class ResearchRepositoryImpl implements ResearchRepository
+{
+    /**
+     * @var DatabaseManager
+     */
+    private $db;
+
+    public function __construct(DatabaseManager $db)
+    {
+        $this->db = $db;
+    }
+
+    public function getContentById(string $id){
+
+    }
+    public function getListByCriteria(ResearchSearchCriteria $criteria){
+
+    }
+    public function getPaginateListByCriteria(ResearchSearchCriteria $criteria){
+
+    }
 }

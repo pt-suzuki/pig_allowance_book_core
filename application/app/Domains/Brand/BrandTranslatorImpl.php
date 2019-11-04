@@ -9,7 +9,32 @@
 namespace App\Domains\Brand;
 
 
-class BrandTranslatorImpl implements BrandTranslator
-{
+use App\Domains\AbstractTranslator;
+use Illuminate\Auth\AuthManager;
+use Illuminate\Http\Request;
 
+class BrandTranslatorImpl extends AbstractTranslator implements BrandTranslator
+{
+    /**
+     * @var AuthManager
+     */
+    private $auth;
+
+    public function __construct(AuthManager $auth)
+    {
+        $this->auth = $auth;
+    }
+
+    public function parseRequestToSearchCriteria(Request $request): BrandSearchCriteria{
+        $criteria = new BrandSearchCriteria();
+        return $criteria;
+    }
+
+    public function parseRequestToModel(Request $request,string $id = null) : Brand{
+        $model = new Brand();
+        if($id != null){
+            $model = Brand::firstOrNew(["id"=> $id]);
+        }
+        return $model;
+    }
 }

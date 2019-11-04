@@ -8,8 +8,11 @@
 
 namespace App\Domains\Brand;
 
+use Illuminate\Http\Request;
 
 interface BrandTranslator
 {
+    public function parseRequestToSearchCriteria(Request $request): BrandSearchCriteria;
 
+    public function parseRequestToModel(Request $request,string $id = null) : Brand;
 }

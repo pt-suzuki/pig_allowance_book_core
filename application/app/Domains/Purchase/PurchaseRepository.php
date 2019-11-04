@@ -11,5 +11,9 @@ namespace App\Domains\Purchase;
 
 interface PurchaseRepository
 {
+    public function getContentById(string $id);
 
+    public function getListByCriteria(PurchaseSearchCriteria $criteria);
+
+    public function getPaginateListByCriteria(PurchaseSearchCriteria $criteria);
 }

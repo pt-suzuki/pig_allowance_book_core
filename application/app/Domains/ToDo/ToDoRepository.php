@@ -11,5 +11,9 @@ namespace App\Domains\ToDo;
 
 interface ToDoRepository
 {
+    public function getContentById(string $id);
 
+    public function getListByCriteria(ToDoSearchCriteria $criteria);
+
+    public function getPaginateListByCriteria(ToDoSearchCriteria $criteria);
 }

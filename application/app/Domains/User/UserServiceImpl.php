@@ -9,7 +9,31 @@
 namespace App\Domains\User;
 
 
-class UserServiceImpl
-{
+use App\Domains\AbstractService;
 
+class UserServiceImpl extends AbstractService implements UserService
+{
+    /**
+     * @var UserRepository
+     */
+    private $repository;
+
+    public  function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    public function getContentById(string $id)
+    {
+        return $this->repository->getContentById($id);
+    }
+
+    public function getListByCriteria(UserSearchCriteria $criteria)
+    {
+        return $this->repository->getListByCriteria($criteria);
+    }
+    public function getPaginateListByCriteria(UserSearchCriteria $criteria)
+    {
+        return $this->repository->getPaginateListByCriteria($criteria);
+    }
 }

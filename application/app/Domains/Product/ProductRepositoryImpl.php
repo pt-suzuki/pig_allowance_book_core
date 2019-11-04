@@ -9,7 +9,26 @@
 namespace App\Domains\Product;
 
 
-class ProductRepositoryImpl
-{
+use Illuminate\Database\DatabaseManager;
 
+class ProductRepositoryImpl implements ProductRepository
+{
+    /**
+     * @var DatabaseManager
+     */
+    private $db;
+
+    public function __construct(DatabaseManager $db)
+    {
+        $this->db = $db;
+    }
+    public function getContentById(string $id){
+        return ["data"=>"テスト"];
+    }
+    public function getListByCriteria(ProductSearchCriteria $criteria){
+        return ["data"=>"テスト"];
+    }
+    public function getPaginateListByCriteria(ProductSearchCriteria $criteria){
+        return ["data"=>"テスト"];
+    }
 }

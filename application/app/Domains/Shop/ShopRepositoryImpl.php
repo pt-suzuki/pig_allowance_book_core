@@ -9,7 +9,27 @@
 namespace App\Domains\Shop;
 
 
-class ShopRepositoryImpl
-{
+use Illuminate\Database\DatabaseManager;
 
+class ShopRepositoryImpl implements ShopRepository
+{
+    /**
+     * @var DatabaseManager
+     */
+    private $db;
+
+    public function __construct(DatabaseManager $db)
+    {
+        $this->db = $db;
+    }
+
+    public function getContentById(string $id){
+
+    }
+    public function getListByCriteria(ShopSearchCriteria $criteria){
+
+    }
+    public function getPaginateListByCriteria(ShopSearchCriteria $criteria){
+
+    }
 }

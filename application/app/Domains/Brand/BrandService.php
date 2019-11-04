@@ -9,7 +9,17 @@
 namespace App\Domains\Brand;
 
 
+use Illuminate\Database\Eloquent\Model;
+
 interface BrandService
 {
-    public function get();
+    public function getContentById(string $id);
+
+    public function getListByCriteria(BrandSearchCriteria $criteria);
+
+    public function getPaginateListByCriteria(BrandSearchCriteria $criteria);
+
+    public function save(Model $model);
+
+    public function delete(Model $model);
 }

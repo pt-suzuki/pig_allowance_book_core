@@ -9,7 +9,17 @@
 namespace App\Domains\ToDo;
 
 
+use Illuminate\Database\Eloquent\Model;
+
 interface ToDoService
 {
+    public function getContentById(string $id);
 
+    public function getListByCriteria(ToDoSearchCriteria $criteria);
+
+    public function getPaginateListByCriteria(ToDoSearchCriteria $criteria);
+
+    public function save(Model $model);
+
+    public function delete(Model $model);
 }

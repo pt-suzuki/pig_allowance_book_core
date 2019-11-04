@@ -8,9 +8,6 @@ namespace App\Enums;
  */
 class ErrorCode extends Enums
 {
-    /**
-     * AIナビ検索
-     */
     const AI_NAVIGATION_SEARCH_BRANCH_CODE_NOT_NUMERIC = "1001";
     const AI_NAVIGATION_SEARCH_CATEGORY_NOT_NUMERIC = "1002";
     const AI_NAVIGATION_SEARCH_COMPANY_CODE_NOT_NUMERIC = "1003";

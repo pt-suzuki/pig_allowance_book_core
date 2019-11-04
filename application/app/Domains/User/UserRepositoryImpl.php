@@ -9,7 +9,27 @@
 namespace App\Domains\User;
 
 
-class UserRepositoryImpl
-{
+use Illuminate\Database\DatabaseManager;
 
+class UserRepositoryImpl implements UserRepository
+{
+    /**
+     * @var DatabaseManager
+     */
+    private $db;
+
+    public function __construct(DatabaseManager $db)
+    {
+        $this->db = $db;
+    }
+
+    public function getContentById(string $id){
+
+    }
+    public function getListByCriteria(UserSearchCriteria $criteria){
+
+    }
+    public function getPaginateListByCriteria(UserSearchCriteria $criteria){
+
+    }
 }

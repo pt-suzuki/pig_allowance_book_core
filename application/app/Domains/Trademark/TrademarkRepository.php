@@ -11,5 +11,9 @@ namespace App\Domains\Trademark;
 
 interface TrademarkRepository
 {
+    public function getContentById(string $id);
 
+    public function getListByCriteria(TrademarkSearchCriteria $criteria);
+
+    public function getPaginateListByCriteria(TrademarkSearchCriteria $criteria);
 }

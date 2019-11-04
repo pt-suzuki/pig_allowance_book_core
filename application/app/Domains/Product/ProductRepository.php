@@ -11,5 +11,9 @@ namespace App\Domains\Product;
 
 interface ProductRepository
 {
+    public function getContentById(string $id);
 
+    public function getListByCriteria(ProductSearchCriteria $criteria);
+
+    public function getPaginateListByCriteria(ProductSearchCriteria $criteria);
 }

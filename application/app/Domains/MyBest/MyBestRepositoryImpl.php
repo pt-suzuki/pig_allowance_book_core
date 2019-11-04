@@ -9,7 +9,26 @@
 namespace App\Domains\MyBest;
 
 
-class MyBestRepositoryImpl
-{
+use Illuminate\Database\DatabaseManager;
 
+class MyBestRepositoryImpl implements MyBestRepository
+{
+    /**
+     * @var DatabaseManager
+     */
+    private $db;
+
+    public function __construct(DatabaseManager $db)
+    {
+        $this->db = $db;
+    }
+    public function getContentById(string $id){
+        return ["data"=>"テスト"];
+    }
+    public function getListByCriteria(MyBestSearchCriteria $criteria){
+        return ["data"=>"テスト"];
+    }
+    public function getPaginateListByCriteria(MyBestSearchCriteria $criteria){
+        return ["data"=>"テスト"];
+    }
 }

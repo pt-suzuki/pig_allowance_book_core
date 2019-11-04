@@ -9,7 +9,9 @@
 namespace App\Domains\Brand;
 
 
-class BrandSearchCriteria
+use App\Domains\AbstractCriteria;
+
+class BrandSearchCriteria extends AbstractCriteria
 {
 
 }

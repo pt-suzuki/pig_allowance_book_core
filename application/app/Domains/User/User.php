@@ -2,11 +2,12 @@
 
 namespace App\Domains\User;
 
+use App\Domains\IModel;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements IModel
 {
     use Notifiable;
 
