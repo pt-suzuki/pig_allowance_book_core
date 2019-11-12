@@ -19,12 +19,12 @@ jobs:
     - setup_remote_docker # コレを書くことでDocker上にDockerが立ち上がる
     - run: sudo pip install awscli
     - run: $(aws ecr get-login --region ap-northeast-1 --no-include-email)
-    - run: docker build -f docker/nginx/Dockerfile-nginx -t nginx:dev-$CIRCLE_SHA1 .
-    - run: docker build -f docker/php-fpm/Dockerfile-php-fpm -t php-fpm:dev-$CIRCLE_SHA1 ./
-    - run: docker tag nginx:dev-$CIRCLE_SHA1 557749971711.dkr.ecr.ap-northeast-1.amazonaws.com/nginx:dev-$CIRCLE_SHA1
-    - run: docker tag php-fpm:dev-$CIRCLE_SHA1 557749971711.dkr.ecr.ap-northeast-1.amazonaws.com/php-fpm:dev-$CIRCLE_SHA1
-    - run: docker push 557749971711.dkr.ecr.ap-northeast-1.amazonaws.com/nginx:dev-$CIRCLE_SHA1
-    - run: docker push 557749971711.dkr.ecr.ap-northeast-1.amazonaws.com/php-fpm:dev-$CIRCLE_SHA1
+    - run: docker build -f docker/nginx/Dockerfile-nginx -t nginx:dev .
+    - run: docker build -f docker/php-fpm/Dockerfile-php-fpm -t php-fpm:dev ./
+    - run: docker tag nginx:dev 557749971711.dkr.ecr.ap-northeast-1.amazonaws.com/nginx:dev
+    - run: docker tag php-fpm:dev 557749971711.dkr.ecr.ap-northeast-1.amazonaws.com/php-fpm:dev
+    - run: docker push 557749971711.dkr.ecr.ap-northeast-1.amazonaws.com/nginx:dev
+    - run: docker push 557749971711.dkr.ecr.ap-northeast-1.amazonaws.com/php-fpm:dev
 
 workflows:
   version: 2
