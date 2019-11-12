@@ -83,3 +83,4 @@ unison: started
 [2019-11-04 22:22:01 +0900] Sync Log:  [END] Deleting node_modules
 [2019-11-04 22:22:01 +0900] Sync Log:  UNISON 2.51.2 (OCAML 4.06.1) finished propagating changes at 22:22:01.16 on 04 Nov 2019
 [2019-11-04 22:22:01 +0900] Sync Log:  Synchronization complete at 22:22:01  (1 item transferred, 0 skipped, 0 failed)
+[2019-11-05 12:08:50 +0900] Sync Log:  Error response from daemon: Bad response from Docker engine
