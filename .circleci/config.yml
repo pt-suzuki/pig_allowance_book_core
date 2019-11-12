@@ -9,7 +9,6 @@ defaults: &defaults
   - image: circleci/python:2.7-node-browsers
     environment:
       AWS_ID: 557749971711
-      AWS_PASS: eyJwYXlsb2FkIjoiL1VQZTZDS1JBdlZla0ZGQ1hWRHc1VyttVFk1QmRPY2d5YmxEU3RYcXl0NkxpUWpiYXlnTlVJWlRIQk9yUFRpcXJQa0thZFQ4SHF1aXp0ZklWRjJQVlhvdkhLKaws
 
 jobs:
   ecr:
@@ -19,7 +18,7 @@ jobs:
     # Docker in Docker
     - setup_remote_docker # コレを書くことでDocker上にDockerが立ち上がる
     - run: sudo pip install awscli
-    - run: docker login -u AWS -p ${AWS_PASS} ecr get-login --no-include-email --region ap-northeast-1
+    - run: docker login -u AWS -p eyJwYXlsb2FkIjoiL1VQZTZDS1JBdlZla0ZGQ1hWRHc1VyttVFk1QmRPY2d5YmxEU3RYcXl0NkxpUWpiYXlnTlVJWlRIQk9yUFRpcXJQa0thZFQ4SHF1aXp0ZklWRjJQVlhvdkhLKaws ecr get-login --no-include-email --region ap-northeast-1
     - run: $(aws ecr get-login --region ap-northeast-1 --no-include-email)
     - run: docker build -f docker/nginx/Dockerfile-nginx -t nginx:dev-$CIRCLE_SHA1 .
     - run: docker build -f docker/php-fpm/Dockerfile-php-fpm -t php-fpm:dev-$CIRCLE_SHA1 ./
