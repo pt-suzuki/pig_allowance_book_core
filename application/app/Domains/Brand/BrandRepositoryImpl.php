@@ -24,14 +24,14 @@ class BrandRepositoryImpl implements BrandRepository
     }
 
     public function getContentById(string $id){
-        return ["data"=>"テーーと"];
+        return ["data"=>"test"];
     }
 
     public function getListByCriteria(BrandSearchCriteria $criteria){
-        return ["data"=>"テーーと"];
+        return ["data"=>"test"];
     }
 
     public function getPaginateListByCriteria(BrandSearchCriteria $criteria){
-        return ["data"=>"テーーと"];
+        return ["data"=>"test"];
     }
 }

@@ -14,7 +14,6 @@ use Illuminate\Http\Response;
 class BrandPagingListResponder
 {
     public function getResponse($data){
-        $data["test"] = "test";
         return new JsonResponse($data,Response::HTTP_OK);
     }
 }
