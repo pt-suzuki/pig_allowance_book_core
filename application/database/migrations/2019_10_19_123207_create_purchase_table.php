@@ -15,6 +15,12 @@ class CreatePurchaseTable extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger("shop_id");
+            $table->bigInteger("product_id");
+            $table->bigInteger("group_id");
+            $table->bigInteger("price");
+            $table->bigInteger("trademark_id")->nullable(true);
+            $table->json("json_detail");
             $table->timestamps();
         });
     }

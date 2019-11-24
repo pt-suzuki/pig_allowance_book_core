@@ -9,7 +9,9 @@
 namespace App\Domains\Trademark;
 
 
-class TrademarkSearchCriteria
+use App\Domains\AbstractCriteria;
+
+class TrademarkSearchCriteria extends AbstractCriteria
 {
 
 }

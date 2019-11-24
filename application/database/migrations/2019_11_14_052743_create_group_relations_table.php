@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBestTable extends Migration
+class CreateGroupRelationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateBestTable extends Migration
      */
     public function up()
     {
-        Schema::create('my_bests', function (Blueprint $table) {
+        Schema::create('group_relations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('product_id');
-            $table->bigInteger('shop_id');
-            $table->bigInteger('price');
-            $table->integer('rank');
-            $table->json('json_detail');
-            $table->bigInteger('group_id');
+            $table->bigInteger("group_id");
+            $table->bigInteger("user_id");
+            $table->integer("role");
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateBestTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('best');
+        Schema::dropIfExists('group_relations');
     }
 }

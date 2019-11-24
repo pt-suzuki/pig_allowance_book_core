@@ -9,7 +9,28 @@
 namespace App\Domains\Product;
 
 
-class ProductSearchCriteria
-{
+use App\Domains\AbstractCriteria;
 
+class ProductSearchCriteria extends AbstractCriteria
+{
+    /**
+     * @var string | null
+     */
+    private $name;
+
+    /**
+     * @return string | null
+     */
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string | null $name
+     */
+    public function setName(?string $name): void
+    {
+        $this->name = $name;
+    }
 }

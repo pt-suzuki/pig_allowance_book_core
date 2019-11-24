@@ -15,6 +15,10 @@ class CreateTodoTable extends Migration
     {
         Schema::create('todo', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->text("name");
+            $table->bigInteger("product_id");
+            $table->integer("status");
+            $table->dateTime("deadline_date");
             $table->timestamps();
         });
     }

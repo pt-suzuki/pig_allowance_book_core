@@ -9,7 +9,9 @@
 namespace App\Domains\Research;
 
 
-class ResearchSearchCriteria
+use App\Domains\AbstractCriteria;
+
+class ResearchSearchCriteria extends AbstractCriteria
 {
 
 }

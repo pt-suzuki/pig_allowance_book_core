@@ -1,14 +1,10 @@
 version: "3"
 
-volumes:
-  php-fpm-pig-allowance-book-syncs:
-    external: true
-
 services:
   nginx-pig-allowance-book:
     ports:
-      - "8001:80"
-      - "10443:443"
+      - "80:80"
+      - "443:443"
     hostname: nginx
     build:
       context: ../
@@ -28,7 +24,7 @@ services:
       dockerfile: ./docker/php-fpm/Dockerfile-php-fpm
     tty: true
     ports:
-      - "10004:9000"
+      - "9000:9000"
     links:
       - db-pig-allowance-book
     environment:
@@ -40,18 +36,17 @@ services:
       PASSWORD_SECRET_ID: 1
       PASSWORD_SECRET_KEY: fIHnsRRbMC6aodkoI81lDwUtrJc1OTM6iaB72iDe
     volumes:
-      - php-fpm-pig-allowance-book-syncs:/var/www
-      - /var/www/node_modules
+      - ../application:/var/www
       - /var/www/storage
       - ./php-fpm/php.ini:/etc/php.ini
   db-pig-allowance-book:
     image: postgres:10.1
     ports:
-      - "15432:5432"
+      - "5432:5432"
     environment:
       - "TZ=Asia/Tokyo"
       - "PGTZ=Asia/Tokyo"
       - "POSTGRES_USER=postgres"
       - "POSTGRES_PASSWORD=mysecretpassword1234"
     volumes:
-      - ./postgres/data:/var/lib/postgresql/data
+      - ./postgres:/var/lib/postgresql

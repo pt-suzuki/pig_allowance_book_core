@@ -9,7 +9,9 @@
 namespace App\Domains\Purchase;
 
 
-class PurchaseSearchCriteria
+use App\Domains\AbstractCriteria;
+
+class PurchaseSearchCriteria extends AbstractCriteria
 {
 
 }

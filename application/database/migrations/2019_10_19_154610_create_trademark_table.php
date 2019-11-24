@@ -16,6 +16,7 @@ class CreateTrademarkTable extends Migration
         Schema::create('trademarks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('brand_id');
+            $table->bigInteger('product_id');
             $table->text('name');
             $table->json('json_detail');
             $table->timestamps();

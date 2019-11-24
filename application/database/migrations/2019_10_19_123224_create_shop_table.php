@@ -15,6 +15,13 @@ class CreateShopTable extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->text("name");
+            $table->float("lat");
+            $table->float("lang");
+            $table->text("payment_type");
+            $table->text("card_type")->nullable(true);
+            $table->integer("shop_type");
+            $table->json("json_detail");
             $table->timestamps();
         });
     }

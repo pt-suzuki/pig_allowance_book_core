@@ -27,7 +27,10 @@ class GroupTranslatorImpl extends AbstractTranslator implements GroupTranslator
 
     public function parseRequestToSearchCriteria(Request $request): GroupSearchCriteria{
         $criteria = new GroupSearchCriteria();
-        return $criteria;
+        if(!empty($request->input("name"))){
+            $criteria->setName($request->input("name"));
+        }
+        return $this->parseRequestToAbstractCriteria($request,$criteria);
     }
 
     public function parseRequestToModel(Request $request,string $id = null) : Group{

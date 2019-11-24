@@ -9,7 +9,9 @@
 namespace App\Domains\User;
 
 
-class UserSearchCriteria
+use App\Domains\AbstractCriteria;
+
+class UserSearchCriteria extends AbstractCriteria
 {
 
 }

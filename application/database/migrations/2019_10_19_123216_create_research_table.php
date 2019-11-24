@@ -15,6 +15,11 @@ class CreateResearchTable extends Migration
     {
         Schema::create('researches', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger("product_id");
+            $table->bigInteger("trademark_id");
+            $table->bigInteger("group_id");
+            $table->bigInteger("price");
+            $table->json("json_detail");
             $table->timestamps();
         });
     }

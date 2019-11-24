@@ -12,7 +12,7 @@ namespace App\Domains;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Log;
 
-class AbstractService
+abstract class AbstractService
 {
     public function save(Model $model)
     {

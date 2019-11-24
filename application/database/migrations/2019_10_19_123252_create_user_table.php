@@ -18,6 +18,7 @@ class CreateUserTable extends Migration
             $table->text('name');
             $table->text('email')->unique();
             $table->text('password');
+            $table->json("json_detail");
             $table->rememberToken();
             $table->timestamps();
         });

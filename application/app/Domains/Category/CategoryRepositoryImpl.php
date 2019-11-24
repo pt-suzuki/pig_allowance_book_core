@@ -9,9 +9,11 @@
 namespace App\Domains\Category;
 
 
+use App\Domains\AbstractRepository;
 use Illuminate\Database\DatabaseManager;
+use Illuminate\Database\Query\Builder;
 
-class CategoryRepositoryImpl implements CategoryRepository
+class CategoryRepositoryImpl extends AbstractRepository implements CategoryRepository
 {
     /**
      * @var DatabaseManager
@@ -24,14 +26,30 @@ class CategoryRepositoryImpl implements CategoryRepository
     }
 
     public function getContentById(string $id){
-        return ["data"=>"テーーと"];
+        $query =  $this->db->table("categories")
+            ->select("id","name","json_detail","created_at","updated_at")
+            ->where("id","=",$id);
+        return $query->first();
     }
 
     public function getListByCriteria(CategorySearchCriteria $criteria){
-        return ["data"=>"テーーと"];
+        $query = $this->db->table("categories")
+            ->select("id","name","json_detail","created_at","updated_at");
+
+        return $this->addCriteria($query,$criteria)->get();
     }
 
     public function getPaginateListByCriteria(CategorySearchCriteria $criteria){
-        return ["data"=>"テーーと"];
+        $query = $this->db->table("categories")
+            ->select("id","name","json_detail","created_at","updated_at");
+
+        return $this->addCriteria($query,$criteria)->paginate($criteria->getRows());
+    }
+
+    private function addCriteria(Builder $query,CategorySearchCriteria $criteria):Builder{
+        if(!empty($criteria->getName())){
+            $query->where("name","like", '%' . self::escape_like($criteria->getName()) . '%');
+        }
+        return $this->addTimeCriteria($query,$criteria,"categories");
     }
 }

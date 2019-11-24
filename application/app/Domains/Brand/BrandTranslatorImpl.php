@@ -27,7 +27,12 @@ class BrandTranslatorImpl extends AbstractTranslator implements BrandTranslator
 
     public function parseRequestToSearchCriteria(Request $request): BrandSearchCriteria{
         $criteria = new BrandSearchCriteria();
-        return $criteria;
+
+        if(!empty($request->input("name"))){
+            $criteria->setName($request->input("name"));
+        }
+
+        return $this->parseRequestToAbstractCriteria($request,$criteria);
     }
 
     public function parseRequestToModel(Request $request,string $id = null) : Brand{

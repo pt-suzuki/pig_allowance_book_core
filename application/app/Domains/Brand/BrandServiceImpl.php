@@ -19,23 +19,19 @@ class BrandServiceImpl extends AbstractService implements BrandService
      */
     private $repository;
 
-    public function __construct(BrandRepository $repository)
-    {
+    public function __construct(BrandRepository $repository){
         $this->repository = $repository;
     }
 
     public function getContentById(string $id){
-
         return $this->repository->getContentById($id);
     }
 
     public function getListByCriteria(BrandSearchCriteria $criteria){
-
         return $this->repository->getListByCriteria($criteria);
     }
 
     public function getPaginateListByCriteria(BrandSearchCriteria $criteria){
-
         return $this->repository->getPaginateListByCriteria($criteria);
     }
 }

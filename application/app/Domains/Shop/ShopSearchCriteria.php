@@ -9,7 +9,9 @@
 namespace App\Domains\Shop;
 
 
-class ShopSearchCriteria
+use App\Domains\AbstractCriteria;
+
+class ShopSearchCriteria extends AbstractCriteria
 {
 
 }

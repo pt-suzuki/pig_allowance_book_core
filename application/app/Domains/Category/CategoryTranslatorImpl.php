@@ -27,7 +27,10 @@ class CategoryTranslatorImpl extends AbstractTranslator implements CategoryTrans
 
     public function parseRequestToSearchCriteria(Request $request): CategorySearchCriteria{
         $criteria = new CategorySearchCriteria();
-        return $criteria;
+        if(!empty($request->input("name"))){
+            $criteria->setName($request->input("name"));
+        }
+        return $this->parseRequestToAbstractCriteria($request,$criteria);
     }
 
     public function parseRequestToModel(Request $request,string $id = null) : Category{

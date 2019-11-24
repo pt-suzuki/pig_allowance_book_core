@@ -9,7 +9,9 @@
 namespace App\Domains\ToDo;
 
 
-class ToDoSearchCriteria
+use App\Domains\AbstractCriteria;
+
+class ToDoSearchCriteria extends AbstractCriteria
 {
 
 }
