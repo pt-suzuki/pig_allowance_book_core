@@ -14,8 +14,13 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
-        if (! $request->expectsJson()) {
-            return route('login');
-        }
+        
+    }
+
+    protected function authenticate($request, array $guards)
+    {
+        //$request->headers->set("Authorization",$request->headers->get("AuthorizationSub"));
+
+        parent::authenticate($request, $guards);
     }
 }
