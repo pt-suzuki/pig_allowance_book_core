@@ -15,10 +15,12 @@ class CreateTodoTable extends Migration
     {
         Schema::create('todo', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text("name");
-            $table->bigInteger("product_id");
-            $table->integer("status");
-            $table->dateTime("deadline_date");
+            $table->bigInteger("group_id")->nullable(true);
+            $table->bigInteger("product_id")->nullable(true);
+            $table->bigInteger("trademark_id")->nullable(true);
+            $table->boolean("status")->default(false);
+            $table->bigInteger("update_user_id")->nullable(true);
+            $table->json("json_detail");
             $table->timestamps();
         });
     }

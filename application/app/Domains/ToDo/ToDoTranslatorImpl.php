@@ -26,6 +26,8 @@ class ToDoTranslatorImpl extends AbstractTranslator implements ToDoTranslator
 
     public function parseRequestToSearchCriteria(Request $request): ToDoSearchCriteria{
         $criteria = new ToDoSearchCriteria();
+        $criteria->setRows(empty($request->input("rows")) ? 50 :
+                $request->input("rows"));
         return $criteria;
     }
 

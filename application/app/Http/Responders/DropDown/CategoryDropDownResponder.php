@@ -6,12 +6,12 @@
  * Time: 17:38
  */
 
-namespace App\Http\Responders\Purchase;
+namespace App\Http\Responders\DropDown;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
-class PurchaseInsertResponder
+class CategoryDropDownResponder
 {
     public function getResponse($data){
         return new JsonResponse($data,Response::HTTP_OK);

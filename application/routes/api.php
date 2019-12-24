@@ -37,12 +37,6 @@ Route::post("/product","Product\ProductInsertAction")->middleware('auth:api');
 Route::put("/product/{id}","Product\ProductUpdateAction")->middleware('auth:api');
 Route::delete("/product/{id}","Product\ProductDeleteAction")->middleware('auth:api');
 
-Route::get("/purchase","Purchase\PurchasePagingListAction")->middleware('auth:api');
-Route::get("/purchase/{id}","Purchase\PurchaseContentAction")->middleware('auth:api');
-Route::post("/purchase","Purchase\PurchaseInsertAction")->middleware('auth:api');
-Route::put("/purchase/{id}","Purchase\PurchaseUpdateAction")->middleware('auth:api');
-Route::delete("/purchase/{id}","Purchase\PurchaseDeleteAction")->middleware('auth:api');
-
 Route::get("/research","Research\ResearchPagingListAction")->middleware('auth:api');
 Route::get("/research/{id}","Research\ResearchContentAction")->middleware('auth:api');
 Route::post("/research","Research\ResearchInsertAction")->middleware('auth:api');
@@ -55,7 +49,7 @@ Route::post("/shop","Shop\ShopInsertAction")->middleware('auth:api');
 Route::put("/shop/{id}","Shop\ShopUpdateAction")->middleware('auth:api');
 Route::delete("/shop/{id}","Shop\ShopDeleteAction")->middleware('auth:api');
 
-Route::get("/todo","ToDo\ToDoPagingListAction")->middleware('auth:api');
+Route::get("/todo","ToDo\ToDoPagingListAction");
 Route::get("/todo/{id}","ToDo\ToDoContentAction")->middleware('auth:api');
 Route::post("/todo","ToDo\ToDoInsertAction")->middleware('auth:api');
 Route::put("/todo/{id}","ToDo\ToDoUpdateAction")->middleware('auth:api');
@@ -72,3 +66,6 @@ Route::get("/user/{id}","User\UserContentAction")->middleware('auth:api');
 Route::post("/user","User\UserInsertAction")->middleware('auth:api');
 Route::put("/user/{id}","User\UserUpdateAction")->middleware('auth:api');
 Route::delete("/user/{id}","User\UserDeleteAction")->middleware('auth:api');
+
+Route::get("/drop_down/product","DropDown\ProductDropDownAction");
+Route::get("/drop_down/category","DropDown\CategoryDropDownAction");

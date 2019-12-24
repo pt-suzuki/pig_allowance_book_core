@@ -62,6 +62,7 @@ use App\Domains\User\UserService;
 use App\Domains\User\UserServiceImpl;
 use App\Domains\User\UserTranslator;
 use App\Domains\User\UserTranslatorImpl;
+use App\Http\Actions\DropDown\CategoryDropDownAction;
 use App\Http\Responders\Brand\BrandContentResponder;
 use App\Http\Responders\Brand\BrandListResponder;
 use App\Http\Responders\Brand\BrandPagingListResponder;
@@ -70,6 +71,8 @@ use App\Http\Responders\Category\CategoryContentResponder;
 use App\Http\Responders\Category\CategoryListResponder;
 use App\Http\Responders\Category\CategoryPagingListResponder;
 use App\Http\Responders\Category\CategoryUpdateResponder;
+use App\Http\Responders\DropDown\CategoryDropDownResponder;
+use App\Http\Responders\DropDown\ProductDropDownResponder;
 use App\Http\Responders\MyBest\MyBestContentResponder;
 use App\Http\Responders\MyBest\MyBestListResponder;
 use App\Http\Responders\MyBest\MyBestPagingListResponder;
@@ -145,14 +148,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(ProductPagingListResponder::class,ProductPagingListResponder::class);
         $this->app->bind(ProductUpdateResponder::class,ProductUpdateResponder::class);
 
-        $this->app->bind(PurchaseService::class,PurchaseServiceImpl::class);
-        $this->app->bind(PurchaseTranslator::class,PurchaseTranslatorImpl::class);
-        $this->app->bind(PurchaseRepository::class,PurchaseRepositoryImpl::class);
-        $this->app->bind(PurchaseListResponder::class,PurchaseListResponder::class);
-        $this->app->bind(PurchaseContentResponder::class,PurchaseContentResponder::class);
-        $this->app->bind(PurchasePagingListResponder::class,PurchasePagingListResponder::class);
-        $this->app->bind(PurchaseUpdateResponder::class,PurchaseUpdateResponder::class);
-
         $this->app->bind(ResearchService::class,ResearchServiceImpl::class);
         $this->app->bind(ResearchTranslator::class,ResearchTranslatorImpl::class);
         $this->app->bind(ResearchRepository::class,ResearchRepositoryImpl::class);
@@ -192,6 +187,9 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(UserContentResponder::class,UserContentResponder::class);
         $this->app->bind(UserPagingListResponder::class,UserPagingListResponder::class);
         $this->app->bind(UserUpdateResponder::class,UserUpdateResponder::class);
+
+        $this->app->bind(CategoryDropDownResponder::class,CategoryDropDownResponder::class);
+        $this->app->bind(ProductDropDownResponder::class,ProductDropDownResponder::class);
     }
 
     /**

@@ -17,14 +17,45 @@ class UsersSeeder extends Seeder
             return;
         }
         $faker = Faker\Factory::create('ja_JP');
-        DB::statement("select setval ('users_id_seq', (select max(id) + 1 from users), false);");
+        DB::statement("select setval ('users_id_seq', 1, false);");
+
+        \App\Domains\User\User::create([
+            'name' => "鈴木拓也",
+            'email' => "tk.suzuki.lcg3@gmail.com",
+            'password' => \Illuminate\Support\Facades\Hash::make('pass'),
+            'json_detail' => json_encode(
+                array(
+                    "name"=>"鈴木拓也",
+                    'email' => "tk.suzuki.lcg3@gmail.com",
+                )
+            )
+        ]);
+
+        \App\Domains\User\User::create([
+            'name' => "坂本糸穂莉",
+            'email' => "boo.k369vv@gmail.com",
+            'password' => \Illuminate\Support\Facades\Hash::make('pass'),
+            'json_detail' => json_encode(
+                array(
+                    "name"=>"坂本糸穂莉",
+                    'email' => "boo.k369vv@gmail.com",
+                )
+            )
+        ]);
 
         for($i = 1; $i <= 10; $i++){
+            $name = "デモ管理者" . $i;
+            $email  = $faker->unique()->safeEmail;
             \App\Domains\User\User::create([
-                'name' => "デモ管理者" . $i,
-                'email' => $faker->unique()->safeEmail,
+                'name' => $name,
+                'email' => $email,
                 'password' => \Illuminate\Support\Facades\Hash::make('pass'),
-                'json_detail' => '{}'
+                'json_detail' => json_encode(
+                    array(
+                        "name"=>$name,
+                        'email' => $email,
+                    )
+                )
             ]);
         }
     }

@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CategoriesSeeder extends Seeder
+class GroupSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,36 +11,35 @@ class CategoriesSeeder extends Seeder
      */
     public function run()
     {
-        if(\Illuminate\Support\Facades\DB::table('categories')->count() > 0){
+        if(\Illuminate\Support\Facades\DB::table('groups')->count() > 0){
             return;
         }
-        \App\Domains\Category\Category::create([
+        \App\Domains\Group\Group::create([
             'id' => 1,
-            'name' => "野菜",
+            'name' => "グループ1",
             'json_detail' => json_encode(
                 array(
-                    "name"=>"野菜",
+                    "name"=>"グループ1",
                     "memo"=>""
                 )),
         ]);
-        \App\Domains\Category\Category::create([
+        \App\Domains\Group\Group::create([
             'id' => 2,
-            'name' => "肉",
+            'name' => "グループ2",
             'json_detail' => json_encode(
                 array(
-                    "name"=>"肉",
+                    "name"=>"グループ2",
                     "memo"=>""
                 )),
         ]);
-        \App\Domains\Category\Category::create([
+        \App\Domains\Group\Group::create([
             'id' => 3,
-            'name' => "日用品",
+            'name' => "グループ3",
             'json_detail' => json_encode(
                 array(
-                    "name"=>"日用品",
+                    "name"=>"グループ3",
                     "memo"=>""
                 )),
         ]);
-
     }
 }

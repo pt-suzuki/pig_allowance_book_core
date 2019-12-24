@@ -19,6 +19,8 @@ interface ProductService
 
     public function getPaginateListByCriteria(ProductSearchCriteria $criteria);
 
+    public function getDropDownListByCriteria(ProductSearchCriteria $criteria);
+
     public function save(Model $model);
 
     public function delete(Model $model);

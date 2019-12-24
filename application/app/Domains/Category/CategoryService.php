@@ -22,4 +22,6 @@ interface CategoryService
     public function save(Model $model);
 
     public function delete(Model $model);
+
+    public function getDropDownListByCriteria(CategorySearchCriteria $criteria);
 }

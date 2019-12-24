@@ -37,4 +37,14 @@ class CategoryServiceImpl extends AbstractService implements CategoryService
     {
         return $this->repository->getPaginateListByCriteria($criteria);
     }
+
+    public function getDropDownListByCriteria(CategorySearchCriteria $criteria){
+        $list = $this->getListByCriteria($criteria);
+
+        $result = array();
+        foreach ($list as $item) {
+            $result[count($result)] = array("code"=> $item->id,"name"=>$item->name);
+        }
+        return $result;
+    }
 }

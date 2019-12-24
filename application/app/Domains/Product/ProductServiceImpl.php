@@ -36,4 +36,14 @@ class ProductServiceImpl extends AbstractService implements ProductService
     {
         return $this->repository->getPaginateListByCriteria($criteria);
     }
+
+    public function getDropDownListByCriteria(ProductSearchCriteria $criteria){
+        $list = $this->getListByCriteria($criteria);
+
+        $result = array();
+        foreach ($list as $item) {
+            $result[count($result)] = array("code"=> $item->id,"name"=>$item->name);
+        }
+        return $result;
+    }
 }
