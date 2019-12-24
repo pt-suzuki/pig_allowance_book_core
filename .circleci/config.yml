@@ -5,11 +5,8 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: circleci/python:2.7-node-browsers
-    environment:
-      USER_NAME: root
-      HOST_NAME:
+    machine:
+      image: circleci/classic:edge
     steps:
     - checkout
     - add_ssh_keys:
