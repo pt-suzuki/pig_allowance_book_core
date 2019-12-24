@@ -3,34 +3,19 @@
 # Check https://circleci.com/docs/2.0/language-php/ for more details
 #
 version: 2
-defaults: &defaults
-  working_directory: ~/docker
-  docker:
-  - image: circleci/python:2.7-node-browsers
-    environment:
-      AWS_ID: 557749971711
-
 jobs:
-  ecr:
-    <<: *defaults
+  build:
+    docker:
+      - image: circleci/python:2.7-node-browsers
     steps:
     - checkout
-    # Docker in Docker
-    - setup_remote_docker # コレを書くことでDocker上にDockerが立ち上がる
-    - run: sudo pip install awscli
-    - run: $(aws ecr get-login --region ap-northeast-1 --no-include-email)
-    - run: docker build -f docker/nginx/Dockerfile-nginx -t nginx:dev .
-    - run: docker build -f docker/php-fpm/Dockerfile-php-fpm -t php-fpm:dev ./
-    - run: docker tag nginx:dev 557749971711.dkr.ecr.ap-northeast-1.amazonaws.com/nginx:dev
-    - run: docker tag php-fpm:dev 557749971711.dkr.ecr.ap-northeast-1.amazonaws.com/php-fpm:dev
-    - run: docker push 557749971711.dkr.ecr.ap-northeast-1.amazonaws.com/nginx:dev
-    - run: docker push 557749971711.dkr.ecr.ap-northeast-1.amazonaws.com/php-fpm:dev
+    - run: ssf ${USER_NAME}@${HOST_NAME} "cd /home/webmaster/pig_allowance_book_core && git pull"
 
 workflows:
   version: 2
-  ecr_push:
+  build_and_deploy:
     jobs:
-    - ecr:
+    - build:
         filters:
           branches:
             only: /^master/
