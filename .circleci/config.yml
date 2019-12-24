@@ -12,8 +12,7 @@ jobs:
       HOST_NAME:
     steps:
     - checkout
-    - run: scp -oStrictHostKeyChecking=no
-    - run: ssh root@153.127.34.236 "cd /home/webmaster/pig_allowance_book_core && git pull"
+    - run: ssh -o StrictHostKeyChecking=no root@153.127.34.236 "cd /home/webmaster/pig_allowance_book_core && git pull"
 
 workflows:
   version: 2
