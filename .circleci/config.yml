@@ -11,7 +11,7 @@ jobs:
     - checkout
     - add_ssh_keys
     - run: ssh-add -l
-    - run: ssh root@153.127.34.236
+    - run: ssh root@153.127.34.236 "cd /home/webmaster/pig_allowance_book_core && git pull"
 workflows:
   version: 2
   build_and_deploy:
