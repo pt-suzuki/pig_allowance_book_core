@@ -9,7 +9,7 @@ jobs:
       - image: circleci/python:2.7-node-browsers
     steps:
     - checkout
-    - run: ssf ${USER_NAME}@${HOST_NAME} "cd /home/webmaster/pig_allowance_book_core && git pull"
+    - run: ssh ${USER_NAME}@${HOST_NAME} "cd /home/webmaster/pig_allowance_book_core && git pull"
 
 workflows:
   version: 2
