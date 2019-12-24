@@ -12,6 +12,7 @@ jobs:
       HOST_NAME:
     steps:
     - checkout
+    - add_ssh_keys
     - run: ssh root@153.127.34.236 "cd /home/webmaster/pig_allowance_book_core && git pull"
 
 workflows:
