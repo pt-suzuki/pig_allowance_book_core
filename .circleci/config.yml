@@ -13,6 +13,8 @@ jobs:
     steps:
     - checkout
     - add_ssh_keys
+      fingerprints:
+        - "49:ab:88:4b:8c:be:50:e1:23:66:1c:9f:b6:31:e3:d5"
     - run: ssh-keyscan 40.89.139.99 >> ~/.ssh/known_hosts
     - run: ssh root@153.127.34.236 "cd /home/webmaster/pig_allowance_book_core && git pull"
 
