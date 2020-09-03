@@ -15,5 +15,5 @@ interface ProductTranslator
 {
     public function parseRequestToSearchCriteria(Request $request): ProductSearchCriteria;
 
-    public function parseRequestToModel(Request $request,string $id) : Product;
+    public function parseRequestToModel(Request $request,string $id = null) : Product;
 }

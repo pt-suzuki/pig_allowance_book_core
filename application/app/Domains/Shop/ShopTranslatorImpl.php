@@ -27,6 +27,9 @@ class ShopTranslatorImpl extends AbstractTranslator implements ShopTranslator
 
     public function parseRequestToSearchCriteria(Request $request): ShopSearchCriteria{
         $criteria = new ShopSearchCriteria();
+        $criteria->setRows(empty($request->input("rows")) ? 50 :
+            $request->input("rows"));
+
         return $criteria;
     }
 

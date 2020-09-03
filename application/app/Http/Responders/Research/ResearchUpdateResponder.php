@@ -8,12 +8,21 @@
 
 namespace App\Http\Responders\Research;
 
+use App\Enums\ErrorCode;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 
 class ResearchUpdateResponder
 {
     public function getResponse($data){
-        return new JsonResponse($data,Response::HTTP_OK);
+        if($data == null){
+            return new JsonResponse(array("result_status" => "3",
+                "message"=>array(ErrorCode::getValueList()[ErrorCode::UNKNOWN_ERROR]),
+                "result_data"=>[]), Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+
+        return new JsonResponse(array("result_status" => "0",
+            "message"=>[],
+            "result_data"=>$data), Response::HTTP_OK);
     }
 }

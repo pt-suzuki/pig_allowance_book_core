@@ -11,6 +11,7 @@ namespace App\Domains\ToDo;
 use Illuminate\Auth\AuthManager;
 use Illuminate\Http\Request;
 use App\Domains\AbstractTranslator;
+use Illuminate\Support\Facades\Log;
 
 class ToDoTranslatorImpl extends AbstractTranslator implements ToDoTranslator
 {
@@ -27,7 +28,12 @@ class ToDoTranslatorImpl extends AbstractTranslator implements ToDoTranslator
     public function parseRequestToSearchCriteria(Request $request): ToDoSearchCriteria{
         $criteria = new ToDoSearchCriteria();
         $criteria->setRows(empty($request->input("rows")) ? 50 :
-                $request->input("rows"));
+            $request->input("rows"));
+
+        if($request->input("status") != null){
+            $criteria->setStatus($request->input("status"));
+        }
+
         return $criteria;
     }
 
@@ -36,6 +42,13 @@ class ToDoTranslatorImpl extends AbstractTranslator implements ToDoTranslator
         if($id != null){
             $model = ToDo::firstOrNew(["id"=> $id]);
         }
+        $model->group_id = $request->input("group_id");
+        $model->product_id = $request->input("product_id");
+        $model->status = $request->input("status");
+        $model->trademark_id = $request->input("trademark_id");
+        $model->priority = $request->input("priority");
+
+        $model->json_detail = json_encode($request->all());
         return $model;
     }
 }

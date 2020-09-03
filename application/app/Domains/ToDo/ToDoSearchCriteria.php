@@ -13,5 +13,24 @@ use App\Domains\AbstractCriteria;
 
 class ToDoSearchCriteria extends AbstractCriteria
 {
+    /**
+     * @var ?bool
+     */
+    private $status;
 
+    /**
+     * @return bool
+     */
+    public function isStatus(): ?bool
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param bool $status
+     */
+    public function setStatus(?bool $status): void
+    {
+        $this->status = $status;
+    }
 }

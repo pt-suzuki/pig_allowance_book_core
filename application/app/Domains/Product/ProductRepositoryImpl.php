@@ -32,22 +32,27 @@ class ProductRepositoryImpl extends AbstractRepository implements ProductReposit
     }
 
     public function getListByCriteria(ProductSearchCriteria $criteria){
-        $query = $this->db->table("products")
-            ->select("id","name","json_detail","created_at","updated_at");
+        $query = $this->createSelectQuery();
 
         return $this->addCriteria($query,$criteria)->get();
     }
 
     public function getPaginateListByCriteria(ProductSearchCriteria $criteria){
-        $query = $this->db->table("products")
-            ->select("id","name","json_detail","created_at","updated_at");
+        $query = $this->createSelectQuery();
 
         return $this->addCriteria($query,$criteria)->paginate($criteria->getRows());
     }
 
+    public function createSelectQuery(){
+        return $query = $this->db->table("products")
+            ->select("products.id","products.name","products.json_detail",
+                "products.created_at","products.updated_at");
+    }
+
     private function addCriteria(Builder $query,ProductSearchCriteria $criteria):Builder{
         if(!empty($criteria->getName())){
-            $query->where("name","like", '%' . self::escape_like($criteria->getName()) . '%');
+            $query->where("products.name","like",
+                '%' . self::escape_like($criteria->getName()) . '%');
         }
         return $this->addTimeCriteria($query,$criteria,"products");
     }

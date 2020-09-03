@@ -46,17 +46,21 @@ class ToDoRepositoryImpl extends AbstractRepository implements ToDoRepository
 
     public function createSelectQuery(){
         return $this->db->table("todo")
-            ->select("todo.id","todo.created_at","todo.updated_at",
+            ->select("todo.id","todo.created_at","todo.updated_at","todo.group_id","todo.status",
                 "products.name as product_name","trademarks.name as trademark_name",
                 "products.id as product_id","trademarks.id as trademark_id","products.category_id as category_id",
-                $this->db->raw("todo.json_detail->>'memo' as memo"))
+                $this->db->raw("todo.json_detail->>'memo' as memo"),"todo.priority")
             ->leftJoin("products","products.id","=","todo.product_id")
             ->leftJoin("trademarks","trademarks.id","=","todo.trademark_id");
     }
 
     private function addCriteria(Builder $query,ToDoSearchCriteria $criteria):Builder{
-        $query->orderBy("updated_at","asc");
+        $query->orderBy("created_at","asc");
         $query->orderBy("id","asc");
+
+        if($criteria->isStatus() != null){
+            $query->where("todo.status","=",$criteria->isStatus() == 0);
+        }
 
         return $this->addTimeCriteria($query,$criteria,"todo");
     }

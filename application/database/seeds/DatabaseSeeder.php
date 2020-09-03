@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(GroupSeeder::class);
         $this->call(GroupRelationSeeder::class);
         $this->call(TodoSeeder::class);
+        $this->call(ShopsSeeder::class);
     }
 }
